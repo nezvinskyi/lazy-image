@@ -1,8 +1,4 @@
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-
-const generateArray = (items: number) => [...Array.from(Array(items).keys())];
-
+import { Link } from 'react-router-dom';
 import './App.css';
 
 function App() {
@@ -11,21 +7,23 @@ function App() {
       <h1>
         <span>Lazy Loading Images</span> 🖼️
       </h1>
-
-      <div className="container-images">
-        {generateArray(15).map(image => (
-          <LazyLoadImage
-            key={image}
-            src={`https://picsum.photos/700/500?random=${image}`}
-            alt={`Image Alt-${image}`}
-            className="img-lazy"
-            width={700}
-            height={500}
-            placeholderSrc={''}
-            effect="blur" // opacity | black-and-white
-          />
-        ))}
-      </div>
+      <ul>
+        <li>
+          <Link to={'lazy-react'}>
+            {' '}
+            Lazy loading using React lazy-load-image Component{' '}
+          </Link>
+        </li>
+        <li>
+          <Link to={'lazy-native'}>
+            {' '}
+            Lazy loading using native loading='lazy' attribute
+          </Link>
+        </li>
+        <li>
+          <Link to={'no-lazy'}> No lazy loading</Link>
+        </li>
+      </ul>
     </div>
   );
 }
